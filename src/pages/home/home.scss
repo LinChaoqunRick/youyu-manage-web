@@ -1,0 +1,19 @@
+.home-container{
+  height: 100%;
+  padding: 16px 0;
+  .home-body{
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .home-body-item{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      height: 48%;
+    }
+    .home-body-bottom{
+      //margin-top: 10px;
+    }
+  }
+}

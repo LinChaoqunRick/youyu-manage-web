@@ -1,0 +1,9 @@
+.main-container {
+  height: 100%;
+
+  .outlet {
+    overflow: auto;
+    height: calc(100vh - 60px);
+    //padding: 10px 10px 0 0;
+  }
+}
