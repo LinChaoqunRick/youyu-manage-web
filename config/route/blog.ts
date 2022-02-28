@@ -2,7 +2,7 @@ export default [
   {
     path: '/blog',
     title: "博客",
-    redirect: '/blog/list'
+    redirect: '/blog/overview'
   },
   {
     path: '/blog',
@@ -22,6 +22,7 @@ export default [
       {
         path: "*",
         title: "博客",
+        hide: true,
         redirect: '/blog'
       }
     ]

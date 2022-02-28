@@ -2,10 +2,14 @@ const ApiBase = '/plat';
 const FrontApiBase = '/api';
 
 const Api = {
+  // 登录
   getLogin: ApiBase + "/login/getLogin",
 
   // 博客
-  getBlogList: ApiBase + "/blog/list"
+  getBlogList: ApiBase + "/blog/list",
+
+  // 用户
+  getUserList: ApiBase + '/user/list'
 }
 
 

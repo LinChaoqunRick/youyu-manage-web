@@ -47,9 +47,9 @@ class UTable extends React.Component {
     this.setState({loading: true});
     const {tableParams} = this.props;
     let {params} = tableParams;
-    params = Object.assign(params, {count: this.state.pagination.pageSize});
+    params = Object.assign(params, {count: this.state.pagination.pageSize,page: this.state.page});
     console.log(params);
-    http.get(tableParams.listUrl + `/${this.state.page}`, params).then(res => {
+    http.post(tableParams.listUrl, params).then(res => {
       console.log(res);
       this.setState({
         data: res.list,

@@ -78,4 +78,17 @@
 
 .active {
   font-weight: bold;
+  color: #1890ff !important;
+}
+
+.ant-menu-item-selected {
+  background-color: transparent !important;
+
+  &:after {
+    border: none !important;
+  }
+}
+
+.ant-tag {
+  margin-right: 0 !important;
 }

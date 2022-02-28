@@ -8,8 +8,8 @@ const {Option} = Select;
 
 const BlogList = (props) => {
   const tableParams = {
-    listUrl: Api.getBlogList,
-    key: "blogID",
+    listUrl: Api.getUserList,
+    key: "userID",
     params: {
 
     }
@@ -18,17 +18,6 @@ const BlogList = (props) => {
   const columns = [
     {
       title: '编号',
-      dataIndex: 'blogID',
-      width: 80
-    },
-    {
-      title: '标题',
-      dataIndex: 'title',
-      width: 400,
-    },
-    {
-
-      title: '作者编号',
       dataIndex: 'userID',
       width: 80
     },
@@ -37,30 +26,34 @@ const BlogList = (props) => {
       dataIndex: 'nickname',
     },
     {
-      title: '类型',
-      dataIndex: 'createType',
+      title: '性别',
+      dataIndex: 'sex',
       align: 'center',
       width: 80
     },
     {
-      title: '发布日期',
-      dataIndex: 'firstPubDate',
+      title: '邮箱',
+      dataIndex: 'email',
     },
     {
-      title: '更新日期',
-      dataIndex: 'lastPubDate'
+      title: '注册日期',
+      dataIndex: 'registerTime'
     },
-    // {
-    //   title: '状态',
-    //   dataIndex: 'status',
-    //   align: 'center',
-    //   width: 80,
-    //   render: (text, record) => (
-    //     <Tag color={text == 0 ? "#87d068" : "#f50"}>
-    //       {text == 0 ? "正常" : "隐藏"}
-    //     </Tag>
-    //   ),
-    // },
+    {
+      title: '博客数',
+      dataIndex: 'blogNumber'
+    },
+    {
+      title: '状态',
+      dataIndex: 'status',
+      align: 'center',
+      width: 80,
+      render: (text, record) => (
+        <Tag color={text == 0 ? "#87d068" : "#f50"}>
+          {text == 0 ? "正常" : "禁用"}
+        </Tag>
+      ),
+    },
   ]
 
   // componentDidMount

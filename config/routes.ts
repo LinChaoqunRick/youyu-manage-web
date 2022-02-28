@@ -1,5 +1,6 @@
 import home from './route/home';
 import blog from './route/blog';
+import user from './route/user';
 
 export default [
   {path: '/login', component: '@/pages/login/Login'},
@@ -10,6 +11,6 @@ export default [
   {
     path: '/',
     component: '@/pages/main/Main',
-    routes: [...home, ...blog]
+    routes: [...home, ...blog, ...user]
   },
 ]
