@@ -10,9 +10,7 @@ const BlogList = (props) => {
   const tableParams = {
     listUrl: Api.getUserList,
     key: "userID",
-    params: {
-
-    }
+    params: {}
   }
 
   const columns = [
@@ -65,6 +63,19 @@ const BlogList = (props) => {
     console.log(record);
   }
 
+  const forbid = (record) => {
+    console.log(record);
+  }
+
+  const extraButtons = [
+    {
+      name: "禁用",
+      poptip: true,
+      tip: "是否禁用?",
+      callback: 'forbid'
+    }
+  ]
+
   return <div className={"blog-container"}>
     <div className={"mt-10 mr-10"}>
       <Card className={"mb-10 search-box"} size="small" style={{width: "100%"}}>
@@ -86,10 +97,12 @@ const BlogList = (props) => {
       </Card>
       <UTable
         tableParams={tableParams}
+        extraButtons={extraButtons}
         columns={columns}
-        showEdit={false}
+        showEdit={true}
         showDelete={true}
-        rowClick={rowClick}/>
+        rowClick={rowClick}
+        forbid={forbid}/>
     </div>
   </div>
 }

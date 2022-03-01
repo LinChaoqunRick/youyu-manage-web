@@ -35,8 +35,8 @@ export default defineConfig({
   },
   // 配置 external
   externals: {
-    // 'react': 'window.React',
-    // 'react-dom': 'window.ReactDOM',
+    'react': 'window.React',
+    'react-dom': 'window.ReactDOM',
     // 'antd': 'window.Antd',
     // 'axios': 'window.Axios',
     // 'echart': 'window.Echart'
@@ -45,19 +45,17 @@ export default defineConfig({
   // 引入被 external 库的 scripts
   // 区分 development 和 production，使用不同的产物
   scripts: process.env.NODE_ENV === 'development' ? [
-    'https://cdn.jsdelivr.net/npm/react@17.0.0/index.js',
-    'https://cdn.jsdelivr.net/npm/react-dom@17.0.2/index.js',
-    'https://cdn.jsdelivr.net/npm/antd@4.18.8/lib/index.min.js',
-    'https://cdn.jsdelivr.net/npm/axios@0.26.0/index.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/echarts/5.3.0/echarts.min.js'
+    'https://gw.alipayobjects.com/os/lib/react/17.0.0/umd/react.development.js',
+    'https://gw.alipayobjects.com/os/lib/react-dom/17.0.0/umd/react-dom.development.js',
+    // 'https://cdn.jsdelivr.net/npm/axios@0.26.0/dist/axios.min.js'
   ] : [
-    'https://cdn.jsdelivr.net/npm/react@17.0.0/index.min.js',
-    'https://cdn.jsdelivr.net/npm/react-dom@17.0.2/index.min.js',
-    'https://cdn.jsdelivr.net/npm/antd@4.18.8/lib/index.min.js',
-    'https://cdn.jsdelivr.net/npm/axios@0.26.0/dist/axios.min.js',
-    'https://cdnjs.cloudflare.com/ajax/libs/echarts/5.3.0/echarts.min.js'
+    'https://gw.alipayobjects.com/os/lib/react/17.0.0/umd/react.production.min.js',
+    'https://gw.alipayobjects.com/os/lib/react-dom/17.0.0/umd/react-dom.production.min.js',
+    // 'https://cdn.jsdelivr.net/npm/axios@0.26.0/dist/axios.min.js'
   ],
-  dynamicImport: {},
+  dynamicImport: {
+    loading: '@/components/loading/Loading'
+  },
   fastRefresh: {},
   "sass": {}, ///配这里
 });
