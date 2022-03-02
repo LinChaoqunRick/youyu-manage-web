@@ -82,6 +82,10 @@ class UTable extends React.Component {
             {text}
           </Tooltip>
         }
+      } else {
+        return <Tooltip placement="topLeft" color={"#fff"} title={"123123"}>
+          {item.render}
+        </Tooltip>
       }
     })
     const rowSelection = {
@@ -107,13 +111,15 @@ class UTable extends React.Component {
               <Popconfirm title="是否删除?" onConfirm={() => this.deleteConfirm(record)} okText="确定" cancelText="取消">
                 <Button type="link" size="small" danger>删除</Button>
               </Popconfirm> : ""}
-            {extraButtons && extraButtons.map((item,index) => {
-              if (item.poptip){
-                return <Popconfirm title={item.tip} onConfirm={() => this.props[item.callback](record)} okText="确定" cancelText="取消">
-                  <Button type="link" size="small" danger>{item.name}</Button>
+            {extraButtons && extraButtons.map((item, index) => {
+              if (item.poptip) {
+                return <Popconfirm title={item.tip} key={index} onConfirm={() => this.props[item.callback](record)}
+                                   okText="确定" cancelText="取消">
+                  <Button type="link" size="small">{item.name}</Button>
                 </Popconfirm>
               } else {
-                return <Button type="link" size="small" onClick={() => this.props[item.callback](record)} danger>{item.name}</Button>
+                return <Button type="link" size="small" key={index}
+                               onClick={() => this.props[item.callback](record)}>{item.name}</Button>
               }
             })}
           </Space>

@@ -1,10 +1,11 @@
 import {Api} from "../../../network/apis";
-import {Button, Card, Col, Input, Row, Select, Tag} from "antd";
+import {Button, Card, Col, Input, Row, Select, Tag, DatePicker} from "antd";
 import React, {useEffect} from "react";
-import UMenu from "../../../components/menu/UMenu";
 import UTable from "../../../components/table/UTable";
+import {dateFormat, diffDays} from "@/asset/util";
 
 const {Option} = Select;
+const {RangePicker} = DatePicker;
 
 const BlogList = (props) => {
   const tableParams = {
@@ -35,7 +36,12 @@ const BlogList = (props) => {
     },
     {
       title: '注册日期',
-      dataIndex: 'registerTime'
+      dataIndex: 'registerTime',
+      render: (text) => {
+        const date = text ? new Date(text) : "";
+        const diff = diffDays(date);
+        return text?`${dateFormat("yyyy-MM-dd", date)} (${diff})天`:"";
+      }
     },
     {
       title: '博客数',
@@ -67,6 +73,11 @@ const BlogList = (props) => {
     console.log(record);
   }
 
+  const dateChange = (date, dateString) => {
+    console.log(date);
+    console.log(dateString);
+  }
+
   const extraButtons = [
     {
       name: "禁用",
@@ -81,14 +92,18 @@ const BlogList = (props) => {
       <Card className={"mb-10 search-box"} size="small" style={{width: "100%"}}>
         <Row>
           <Col span={6}>
-            <span className={"mr-10"}>标题</span>
+            <span className={"mr-10"}>用户编号</span>
             <Input className={"search-item"} placeholder=""/>
           </Col>
           <Col span={6}>
-            <span className={"mr-10"}>类型</span>
-            <Select className={"search-item"} allowClear>
-              <Option value="lucy">Lucy</Option>
-            </Select>
+            <span className={"mr-10"}>昵称</span>
+            <Input className={"search-item"} placeholder=""/>
+          </Col>
+          <Col span={7}>
+            <span className={"mr-10"}>注册时间</span>
+            <RangePicker
+              onChange={dateChange}
+            />
           </Col>
           <Button className={"search-button"} type="primary" size="middle">
             查询

@@ -35,8 +35,8 @@ export default defineConfig({
   },
   // 配置 external
   externals: {
-    'react': 'window.React',
-    'react-dom': 'window.ReactDOM',
+    // 'react': 'window.React',
+    // 'react-dom': 'window.ReactDOM',
     // 'antd': 'window.Antd',
     // 'axios': 'window.Axios',
     // 'echart': 'window.Echart'
