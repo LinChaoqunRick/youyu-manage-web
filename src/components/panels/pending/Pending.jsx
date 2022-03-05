@@ -5,7 +5,7 @@ import './Pending.scss'
 class Pending extends React.Component {
   render() {
     return (
-      <div className={'pending-container shadow'}>
+      <div className={'pending-container'}>
         <div className={'pending-event message'}>
           <div className={'caption'}>
              当前还有<br/>100条

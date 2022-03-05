@@ -5,6 +5,8 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  border: 1px solid var(--border-color);
+
   .ant-progress{
 
     .ant-progress-text{

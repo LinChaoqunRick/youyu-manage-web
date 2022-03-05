@@ -14,7 +14,7 @@ class DataOverview extends React.Component {
 
   render() {
     return (
-      <div className={'data-overview shadow'}>
+      <div className={'data-overview'}>
         <DataItem to='/user' normal='normal' name='当前用户总数' amount={10} unit={'个'} color={'#87ceeb'}/>
         {/*<DataItem/>*/}
         {/*<DataItem/>*/}

@@ -37,7 +37,7 @@ class RunningDays extends React.Component {
 
   render() {
     return (
-      <div className={'running-days shadow'}>
+      <div className={'running-days'}>
         <Progress
           type="circle"
           strokeColor={{

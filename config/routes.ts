@@ -3,7 +3,13 @@ import blog from './route/blog';
 import user from './route/user';
 
 export default [
-  {path: '/login', component: '@/pages/login/Login'},
+  {
+    path: '/login',
+    component: '@/pages/login/Login',
+    wrappers: [
+      '@/wrappers/loginAuth',
+    ],
+  },
   {
     path: '/',
     redirect: '/home',
@@ -11,6 +17,9 @@ export default [
   {
     path: '/',
     component: '@/pages/main/Main',
+    wrappers: [
+      '@/wrappers/auth',
+    ],
     routes: [...home, ...blog, ...user]
   },
 ]

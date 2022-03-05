@@ -1,9 +1,9 @@
 import React from 'react';
 import './home.scss';
 import RunningDays from "@/components/panels/runningDays/RunningDays";
-import DataOverview from "@//components/panels/dataOverview/DataOverview";
-import Pending from "@//components/panels/pending/Pending";
-import Analysis from "@//components/panels/analysis/Analysis";
+import DataOverview from "@/components/panels/dataOverview/DataOverview";
+import Pending from "@/components/panels/pending/Pending";
+import Analysis from "@/components/panels/analysis/Analysis";
 
 class Home extends React.Component {
   render() {

@@ -16,7 +16,7 @@
 
 .ant-table-tbody {
   tr:nth-child(even) {
-    background-color: rgba(250, 250, 250, 0.6);
+    background-color: var(--table-row-stripe);
   }
 
   tr {

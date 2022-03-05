@@ -4,7 +4,7 @@ import {Menu, Dropdown} from 'antd';
 import {CaretDownOutlined} from '@ant-design/icons';
 import './navigation.scss';
 
-import ThemeSwitch from "../utils/ThemeSwitch";
+import ThemeSwitch from "@/components/utils/switch/ThemeSwitch";
 
 const system = (
   <Menu className={'system-menu'}>

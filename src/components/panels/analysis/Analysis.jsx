@@ -19,7 +19,7 @@ class Analysis extends React.Component {
       }]
     };
     return (
-      <div className={'analysis-container shadow'}>
+      <div className={'analysis-container'}>
         <ReactEcharts option={option} style={{height: '200px', width: '100%'}}/>
       </div>
     )

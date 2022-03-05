@@ -2,9 +2,10 @@
   height: 100%;
   width: 20%;
   padding: 20px;
+  border: 1px solid var(--border-color);
 
   .message {
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid var(--border-color);
   }
 
   .pending-event {
