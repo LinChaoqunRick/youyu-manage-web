@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import UChart from '@/components/chart/UChart'
+import UChart from '@/components/chart/UChart';
+import _ from 'lodash';
 
 import './Analysis.scss'
 
 const Analysis = function () {
-  const option1 = {
+  let option1 = {
     xAxis: {
       type: 'category',
       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -21,17 +22,9 @@ const Analysis = function () {
   const [option, setOption] = useState(option1);
 
   const changeData = () => {
-    option1.series[0].data = [1000, 1000, 1000, 1000, 1000, 1000, 1000];
-    // console.log(option1);
-    setOption(Object.assign({},option1));
-
-    // setOption({
-    //   ...option,
-    //   series: {
-    //     ...option.series[0],
-    //     data: [1000, 1000, 1000, 1000, 1000, 1000, 1000]
-    //   }
-    // })
+    let newOptions = _.cloneDeep(option1)
+    newOptions.series[0].data = [1000, 1000, 1000, 1000, 1000, 1000, 1000];
+    setOption(newOptions)
   }
 
   return (

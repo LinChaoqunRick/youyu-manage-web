@@ -6,7 +6,6 @@ function ThemeSwitch() {
   let [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    console.log(123123);
     let theme = localStorage.getItem("theme") || 'light';
     theme === "dark" ? setChecked(true) : setChecked(false);
     document.documentElement.setAttribute("theme", theme);

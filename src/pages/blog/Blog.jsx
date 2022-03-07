@@ -10,10 +10,6 @@ const Blog = (props) => {
 
   }, [])
 
-  const rowClick = (record) => {
-    console.log(record);
-  }
-
   return <div className={"blog-container"}>
     <UMenu menuList={route[1].routes} title={'博客'}/>
     {props.children}

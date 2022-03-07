@@ -9,12 +9,16 @@ const Api = {
   getBlogList: ApiBase + "/blog/list",
 
   // 用户
-  getUserList: ApiBase + '/user/list'
+  getUserList: ApiBase + '/user/list',
+
+  // 系统
+  setUpdateLog: ApiBase + '/system/setUpdateLog'
 }
 
 
 const FrontApi = {
-  getBlogNewest: FrontApiBase + "/home/newest"
+  getBlogNewest: FrontApiBase + "/home/newest",
+  getUpdateLog: FrontApiBase + '/message/getUpdateLog'
 }
 
 

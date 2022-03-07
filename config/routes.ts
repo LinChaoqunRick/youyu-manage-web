@@ -1,6 +1,7 @@
 import home from './route/home';
 import blog from './route/blog';
 import user from './route/user';
+import system from "./route/system";
 
 export default [
   {
@@ -20,6 +21,11 @@ export default [
     wrappers: [
       '@/wrappers/auth',
     ],
-    routes: [...home, ...blog, ...user]
+    routes: [
+      ...home,
+      ...blog,
+      ...user,
+      ...system
+    ]
   },
 ]

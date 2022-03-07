@@ -18,7 +18,7 @@ axios.interceptors.request.use((config) => {
 
 axios.interceptors.response.use((response) => {
   // 如果是前台的接口，就不做逻辑判断，原因：前台的API没有统一结果格式
-  if (response.config.url.split("/")[1] === "front"){
+  if (response.config.url.split("/")[1] === "api"){
     return response.data;
   }
   const res = response.data;

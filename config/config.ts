@@ -2,6 +2,9 @@ import {defineConfig} from 'umi';
 import route from './routes';
 
 export default defineConfig({
+  alias: {
+    config: '/config',
+  },
   nodeModulesTransform: {
     type: 'none',
   },

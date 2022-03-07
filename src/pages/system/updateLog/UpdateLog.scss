@@ -1,0 +1,19 @@
+.update-log-container {
+  width: 95vw;
+  position: relative;
+
+  .EasyMDEContainer .CodeMirror {
+    height: 79vh;
+
+    .editor-preview {
+      padding: 10px 20px;
+    }
+  }
+
+  .save-button{
+    position: absolute;
+    right: 12px;
+    top: 9px;
+    z-index: 1;
+  }
+}

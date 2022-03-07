@@ -6,26 +6,6 @@ import './navigation.scss';
 
 import ThemeSwitch from "@/components/utils/switch/ThemeSwitch";
 
-const system = (
-  <Menu className={'system-menu'}>
-    <Menu.Item>
-      <div>
-        更新日志
-      </div>
-    </Menu.Item>
-    <Menu.Item>
-      <div>
-        公告
-      </div>
-    </Menu.Item>
-    <Menu.Item>
-      <div>
-        走马灯
-      </div>
-    </Menu.Item>
-  </Menu>
-);
-
 const personal = (
   <Menu className={'personal-menu'}>
     <Menu.Item>
@@ -80,11 +60,9 @@ class Navigation extends React.Component {
             <div className={'menu-item'}>
               <div className={'item-content'}>资源</div>
             </div>
-            <div className={'menu-item'}>
-              <Dropdown overlay={system} className={'item-content'} placement="bottomCenter">
-                <div><span>系统</span><CaretDownOutlined/></div>
-              </Dropdown>
-            </div>
+            <NavLink to='/system' className={'menu-item'}>
+              <div className={'item-content'}>系统</div>
+            </NavLink>
           </div>
           <div className={'system-theme'}>
             <ThemeSwitch/>
