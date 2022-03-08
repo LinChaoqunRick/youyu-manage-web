@@ -1,4 +1,13 @@
-.system-container{
+.system-container {
   display: flex;
   height: 100%;
+
+  aside {
+    height: 100%;
+    width: 208px;
+
+    .u-menu-container {
+      height: 100%;
+    }
+  }
 }

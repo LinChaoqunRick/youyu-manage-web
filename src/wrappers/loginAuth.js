@@ -6,6 +6,6 @@ export default (props) => {
   if (token) {
     return <Redirect to="/home" />;
   } else {
-    return <div>{ props.children }</div>;
+    return <div style={{height: "100%"}} className={'login-wrapper'}>{ props.children }</div>;
   }
 }

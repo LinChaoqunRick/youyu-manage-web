@@ -72,7 +72,7 @@ const BlogList = (props) => {
     console.log(record);
   }
 
-  return <div className={"blog-container"}>
+  return <div className={"blog-container v-section"}>
     <div className={"mt-10 mr-10"}>
       <Card className={"mb-10 search-box"} size="small" style={{width: "100%"}}>
         <Row>

@@ -2,6 +2,16 @@
   width: 95vw;
   position: relative;
 
+  .content-wrapper {
+    padding: 16px 20px;
+  }
+
+  .edit-button {
+    position: fixed;
+    top: 80px;
+    right: 30px;
+  }
+
   .EasyMDEContainer .CodeMirror {
     height: 79vh;
 
@@ -10,10 +20,10 @@
     }
   }
 
-  .save-button{
+  .buttons {
     position: absolute;
-    right: 12px;
-    top: 9px;
+    right: 20px;
+    top: 19px;
     z-index: 1;
   }
 }

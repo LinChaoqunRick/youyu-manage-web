@@ -12,6 +12,7 @@ const Api = {
   getUserList: ApiBase + '/user/list',
 
   // 系统
+  getUpdateLog: ApiBase + '/system/getUpdateLog',
   setUpdateLog: ApiBase + '/system/setUpdateLog'
 }
 
