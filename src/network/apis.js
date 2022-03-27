@@ -10,10 +10,13 @@ const Api = {
 
   // 用户
   getUserList: ApiBase + '/user/list',
+  setDeleted: ApiBase + '/user/setDeleted',
 
   // 系统
+  getNotice: ApiBase + '/system/getNotice',
+  setNotice: ApiBase + '/system/setNotice',
   getUpdateLog: ApiBase + '/system/getUpdateLog',
-  setUpdateLog: ApiBase + '/system/setUpdateLog'
+  setUpdateLog: ApiBase + '/system/setUpdateLog',
 }
 
 

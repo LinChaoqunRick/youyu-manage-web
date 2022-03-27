@@ -30,6 +30,7 @@ const UpdateLog = () => {
       if (res) {
         message.success('保存成功');
         setToEdit(false);
+        highlight();
       } else {
         message.error('保存失败');
       }
@@ -66,7 +67,7 @@ const UpdateLog = () => {
   return <div className={'update-log-container v-section'}>
     {!toEdit ? <div>
       <Button className={'edit-button'} onClick={handleEdit} icon={<EditOutlined/>}>编辑</Button>
-      <div className={'content-wrapper'}
+      <div className={'content-wrapper markdown-body'}
            dangerouslySetInnerHTML={{__html: (new showdown.Converter()).makeHtml(value)}}>
       </div>
     </div> : ""}
@@ -78,7 +79,7 @@ const UpdateLog = () => {
       <SimpleMdeReact
         value={value}
         onChange={onChange}
-        minHeight={"1000px"}
+        minheight={"1000px"}
       />
     </div> : ""}
   </div>

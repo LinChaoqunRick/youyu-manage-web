@@ -1,4 +1,6 @@
 // 日期格式化
+import hljs from "highlight.js";
+
 const dateFormat = (format = 'yyyy-MM-dd hh:mm:ss', date) => {
   if (!date) {
     return '';
@@ -35,4 +37,19 @@ const diffDays = (start, end = new Date()) => {
   return totalDays    // 相差的天数
 }
 
-export {dateFormat, diffDays}
+// 代码高亮
+const highlight = () => {
+  // 配置 highlight.js
+  hljs.configure({
+    // 忽略未经转义的 HTML 字符
+    ignoreUnescapedHTML: true
+  })
+  // 获取到内容中所有的code标签
+  const codes = document.querySelectorAll('pre code')
+  codes.forEach((el) => {
+    // 让code进行高亮
+    hljs.highlightElement(el)
+  })
+}
+
+export {dateFormat, diffDays, highlight}

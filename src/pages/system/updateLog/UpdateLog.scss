@@ -6,10 +6,15 @@
     padding: 16px 20px;
   }
 
+  .markdown-body {
+    color: var(--text-color) !important;
+    background-color: var(--bg-color);
+  }
+
   .edit-button {
-    position: fixed;
-    top: 80px;
-    right: 30px;
+    position: fixed !important;
+    top: 80px !important;
+    right: 30px !important;
   }
 
   .EasyMDEContainer .CodeMirror {

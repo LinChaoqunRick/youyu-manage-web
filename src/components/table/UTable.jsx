@@ -34,8 +34,8 @@ class UTable extends React.Component {
     },
   };
 
-  onSelectChange = selectedRowKeys => {
-    console.log('selectedRowKeys changed: ', selectedRowKeys);
+  onSelectChange = (selectedRowKeys, selectedRows) => {
+    // console.log('selectedRowKeys changed: ', selectedRows);
     this.setState({selectedRowKeys});
   };
 
@@ -47,12 +47,15 @@ class UTable extends React.Component {
     console.log(record);
   }
 
+  clearSelect = () => {
+    this.setState({selectedRowKeys: []});
+  }
+
   getData() {
     this.setState({loading: true});
     const {tableParams} = this.props;
     let {params} = tableParams;
     params = Object.assign(params, {count: this.state.pagination.pageSize, page: this.state.page});
-    console.log(params);
     http.post(tableParams.listUrl, params).then(res => {
       console.log(res);
       this.setState({
@@ -65,6 +68,8 @@ class UTable extends React.Component {
   }
 
   componentDidMount() {
+    this.props.onRef && this.props.onRef(this)
+
     let {tableParams} = this.props;
     const defaultSize = 10;
     tableParams = Object.assign({count: defaultSize}, tableParams);
@@ -105,20 +110,25 @@ class UTable extends React.Component {
         key: 'operate',
         align: 'center',
         render: (record) => (
-          <Space onClick={(event) => event.stopPropagation()} size="0">
-            {showEdit ? <Button type="link" onClick={() => this.handleEdit(record)} size="small">编辑</Button> : ""}
+          <Space onClick={(event) => event.stopPropagation()} size="small">
+            {showEdit ?
+              <Button type='primary' ghost onClick={() => this.handleEdit(record)} size="small">编辑</Button> : ""}
             {showDelete ?
               <Popconfirm title="是否删除?" onConfirm={() => this.deleteConfirm(record)} okText="确定" cancelText="取消">
-                <Button type="link" size="small" danger>删除</Button>
+                <Button ghost size="small" danger>删除</Button>
               </Popconfirm> : ""}
             {extraButtons && extraButtons.map((item, index) => {
+              if (item.show(record) === false) {
+                return
+              }
               if (item.poptip) {
-                return <Popconfirm title={item.tip} key={index} onConfirm={() => this.props[item.callback](record)}
+                return <Popconfirm title={item.tip} key={index}
+                                   onConfirm={() => this.props[item.callback](record)}
                                    okText="确定" cancelText="取消">
-                  <Button type="link" size="small">{item.name}</Button>
+                  <Button ghost type={item.type || 'primary'} size="small">{item.name}</Button>
                 </Popconfirm>
               } else {
-                return <Button type="link" size="small" key={index}
+                return <Button ghost size="small" key={index} type={item.type || 'primary'}
                                onClick={() => this.props[item.callback](record)}>{item.name}</Button>
               }
             })}
@@ -130,7 +140,7 @@ class UTable extends React.Component {
 
     const Footer = () => {
       return <Space onClick={(event) => event.stopPropagation()} size="middle">
-        {showEdit ? <Button type="link" size="small">编辑</Button> : ""}
+        {/*{showEdit ? <Button  ghost size="small">编辑</Button> : ""}*/}
         {showDelete ?
           <Popconfirm
             title="是否删除所选数据?"
@@ -138,8 +148,23 @@ class UTable extends React.Component {
             onCancel={this.cancel}
             okText="确定"
             cancelText="取消">
-            <Button type="link" size="small" danger>删除</Button>
+            <Button ghost size="small" danger>删除</Button>
           </Popconfirm> : ""}
+        {extraButtons && extraButtons.map((item, index) => {
+          if (!item.batch) {
+            return false;
+          }
+          if (item.poptip) {
+            return <Popconfirm title={item.batchTip} key={index}
+                               onConfirm={() => this.props[item.callback](this.state.selectedRowKeys)}
+                               okText="确定" cancelText="取消">
+              <Button type={item.type || 'primary'} ghost size="small">{item.name}</Button>
+            </Popconfirm>
+          } else {
+            return <Button ghost size="small" key={index} type={item.type || 'primary'}
+                           onClick={() => this.props[item.callback](record)}>{item.name}</Button>
+          }
+        })}
       </Space>
     }
 

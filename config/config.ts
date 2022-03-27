@@ -13,6 +13,7 @@ export default defineConfig({
   proxy: {
     // 此项目后端配置
     '/plat': {
+      // 'target': 'https://admin.youyul.com/plat',
       'target': 'http://localhost:8090',
       'changeOrigin': true,
       'pathRewrite': {

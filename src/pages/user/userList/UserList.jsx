@@ -1,8 +1,9 @@
 import {Api} from "../../../network/apis";
-import {Button, Card, Col, Input, Row, Select, Tag, DatePicker} from "antd";
+import {Button, Card, Col, Input, Row, Select, Tag, DatePicker,message} from "antd";
 import React, {useEffect} from "react";
 import UTable from "../../../components/table/UTable";
 import {dateFormat, diffDays} from "@/asset/util";
+import http from "../../../network/https";
 
 const {Option} = Select;
 const {RangePicker} = DatePicker;
@@ -21,7 +22,7 @@ const BlogList = (props) => {
       width: 80
     },
     {
-      title: '作者',
+      title: '昵称',
       dataIndex: 'nickname',
     },
     {
@@ -40,7 +41,7 @@ const BlogList = (props) => {
       render: (text) => {
         const date = text ? new Date(text) : "";
         const diff = diffDays(date);
-        return text?`${dateFormat("yyyy-MM-dd", date)} (${diff})天`:"";
+        return text ? `${dateFormat("yyyy-MM-dd", date)} (${diff})天` : "";
       }
     },
     {
@@ -49,7 +50,7 @@ const BlogList = (props) => {
     },
     {
       title: '状态',
-      dataIndex: 'status',
+      dataIndex: 'deleted',
       align: 'center',
       width: 80,
       render: (text, record) => (
@@ -70,7 +71,35 @@ const BlogList = (props) => {
   }
 
   const forbid = (record) => {
-    console.log(record);
+    let ids = [];
+    // 如果是批量选择
+    if (Array.isArray(record)) {
+      ids = record;
+    } else { // 如果是单选
+      ids.push(record.userID)
+    }
+
+    http.post(Api.setDeleted+'?deleted=1', ids).then(res => {
+      message.success('禁用成功');
+      child.getData();
+      child.clearSelect();
+    })
+  }
+
+  const enable = (record) => {
+    let ids = [];
+    // 如果是批量选择
+    if (Array.isArray(record)) {
+      ids = record;
+    } else { // 如果是单选
+      ids.push(record.userID)
+    }
+
+    http.post(Api.setDeleted+'?deleted=0', ids).then(res => {
+      message.success('启用成功');
+      child.getData();
+      child.clearSelect();
+    })
   }
 
   const dateChange = (date, dateString) => {
@@ -78,12 +107,30 @@ const BlogList = (props) => {
     console.log(dateString);
   }
 
+  let child = '';
+  const onRef = (ref) => {
+    child = ref
+  }
+
   const extraButtons = [
     {
       name: "禁用",
       poptip: true,
       tip: "是否禁用?",
-      callback: 'forbid'
+      batchTip: "是否禁用已选数据?",
+      callback: 'forbid',
+      batch: true,
+      type: 'primary',
+      show: (record) => record.deleted === 0
+    },
+    {
+      name: "启用",
+      poptip: true,
+      tip: "是否启用?",
+      batchTip: "是否启用已选数据?",
+      callback: 'enable',
+      batch: true,
+      show: (record) => record.deleted === 1
     }
   ]
 
@@ -116,8 +163,10 @@ const BlogList = (props) => {
         columns={columns}
         showEdit={true}
         showDelete={true}
+        onRef={onRef}
         rowClick={rowClick}
-        forbid={forbid}/>
+        forbid={forbid}
+        enable={enable}/>
     </div>
   </div>
 }
